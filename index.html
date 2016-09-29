@@ -7,11 +7,13 @@
 <body>
      <input type="file" name="file" id="file"/>
      <button id="upload">upload</button>
-     <div  id="avtar"></div>
+     <div  id="avtar">
+         <img src=""/>
+     </div>
      <script>
          var file = document.getElementById('file');
          var upload = document.getElementById('upload');
-         var imgs = document.getElementById("avtar");
+         var avtar = document.getElementById("avtar");
          upload.addEventListener("click",function(){
              file.click();
         })
@@ -23,6 +25,18 @@
                 xhr.onreadystatechange = function(){
                     if ( xhr.status == 200 &&　xhr.readyState == 4) {
                         console.log(xhr.responseText);
+                        var responseBody = JSON.parse(xhr.responseText);
+                        if (responseBody['success'] === true) {
+                            alert('上传成功');
+                            console.log(responseBody)
+                            var imgElement = document.createElement('img');
+                            var imgServer = location.origin;
+                            imgElement.src = imgServer + responseBody['data']['file_url']
+                            imgElement.width = "100";
+                            imgElement.height = "100";
+                            imgElement.style.borderRadius = "50px";
+                            avtar.appendChild(imgElement);
+                        }
                     }
                 }
                 xhr.open('POST',"/upload.php");
