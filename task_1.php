@@ -40,7 +40,17 @@ class Db_service {
 	}
 }
 
-
+//order_sn timestamp+random+uid
+function create_order_sn($uid){
+	if (strlen($uid) < 4){
+		$uid = str_pad($uid,4,	'0',STR_PAD_LEFT);
+	}
+	if (strlen($uid) > 4){
+		$uid = substr($uid,-1,4);
+	}
+	date_default_timezone_set('Asia/Shanghai');
+	return date('YmdHis').str_pad(mt_rand(0,99999),5,'0',STR_PAD_LEFT).$uid;
+}
 
 
 
