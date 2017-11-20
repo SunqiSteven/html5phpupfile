@@ -28,15 +28,15 @@ class Db_service {
 		}
 	}
 	public function execute($sql,$params){
-			$stmt = $this->pdo->prepare($sql);
-			$result = $stmt->execute($params);
-			return $result;
+		$stmt = $this->pdo->prepare($sql);
+		$result = $stmt->execute($params);
+		return $result;
 		
 	}
 	public function insertGetId($sql,$params){
-			$stmt = $this->pdo->prepare($sql);
-			$result = $stmt->execute($params);
-			return (int)$this->pdo->lastInsertId();
+		$stmt = $this->pdo->prepare($sql);
+		$result = $stmt->execute($params);
+		return (int)$this->pdo->lastInsertId();
 	}
 }
 
