@@ -60,7 +60,10 @@ function create_order_sn($uid){
 	date_default_timezone_set('Asia/Shanghai');
 	return date('YmdHis').str_pad(mt_rand(0,99999),5,'0',STR_PAD_LEFT).$uid;
 }
-
+//create unique identifier
+function create_unique_token(){
+	return md5(uniqid(md5(microtime(true)),true));
+}
 
 
 
