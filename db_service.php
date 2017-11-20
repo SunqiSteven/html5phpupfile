@@ -38,6 +38,15 @@ class Db_service {
 		$result = $stmt->execute($params);
 		return (int)$this->pdo->lastInsertId();
 	}
+	public function beginTransaction(){
+		$this->pdo->beginTransaction();
+	}
+	public function rollback(){
+		$this->rollback();
+	}
+	public function commit(){
+		$this->commit();
+	}
 }
 
 //order_sn timestamp+random+uid
