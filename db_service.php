@@ -42,10 +42,10 @@ class Db_service {
 		$this->pdo->beginTransaction();
 	}
 	public function rollback(){
-		$this->rollback();
+		$this->pdo->rollback();
 	}
 	public function commit(){
-		$this->commit();
+		$this->pdo->commit();
 	}
 }
 
