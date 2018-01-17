@@ -1,5 +1,5 @@
 <?php
-class Controller extends BaseController
+class Controller
 {
     public function send($code,$data=null){
         $codes = [
